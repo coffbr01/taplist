@@ -1,0 +1,5 @@
+apply plugin: 'java'
+
+dependencies {
+	compile('com.sun.jersey:jersey-server:1.8')
+}
