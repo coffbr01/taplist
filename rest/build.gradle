@@ -1,0 +1,9 @@
+dependencies {
+    compile project(':dto')
+    compile project(':entity')
+    compile project(':server')
+    compile project(':api')
+    compile('com.sun.jersey:jersey-server:1.19')
+    compile('com.google.inject:guice:4.0')
+    compile('javax:javaee-api:7.0')
+}

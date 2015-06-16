@@ -1,9 +1,10 @@
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 subprojects {
-	repositories {
-		mavenCentral()
-	}
+    apply plugin: 'java'
+    repositories {
+        mavenCentral()
+    }
 }

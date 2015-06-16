@@ -1,4 +1,4 @@
 dependencies {
     compile project(':dto')
-    compile project(':entity')
+    compile('javax:javaee-api:7.0')
 }

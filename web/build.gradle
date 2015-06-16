@@ -1,9 +1,5 @@
 apply plugin: 'war'
 
 dependencies {
-	compile project(':server')
-}
-
-war {
-	archiveName 'taplist.war'
+    runtime project(':rest')
 }

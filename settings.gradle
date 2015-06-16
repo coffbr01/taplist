@@ -1,2 +1,7 @@
+include 'dto'
+include 'api'
+include 'entity'
 include 'server'
+include 'rest'
 include 'web'
+include 'ear'
