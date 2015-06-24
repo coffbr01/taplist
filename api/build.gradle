@@ -1,5 +1,0 @@
-dependencies {
-    compile project(':dto')
-    compile project(':entity')
-    compile('com.sun.jersey:jersey-server:1.19')
-}

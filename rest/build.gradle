@@ -1,7 +1,0 @@
-dependencies {
-    compile project(':dto')
-    compile project(':entity')
-    compile project(':server')
-    compile project(':api')
-    compile('com.google.inject:guice:3.0')
-}

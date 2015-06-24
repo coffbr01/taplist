@@ -1,15 +1,8 @@
 package com.bcoffield.taplist.server.mgmt;
 
-import com.bcoffield.taplist.api.mgmt.IBeerMgmt;
-import com.bcoffield.taplist.entity.EBeer;
+import com.bcoffield.taplist.server.entity.EBeer;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-
-public class BeerMgmt implements IBeerMgmt {
-    @Inject
-    private EntityManager em;
-
+public class BeerMgmt {
     @Override
     public EBeer createBeer(Float abv, String description, Float fg, String name, Float og, Integer srm) {
         EBeer result = new EBeer();
