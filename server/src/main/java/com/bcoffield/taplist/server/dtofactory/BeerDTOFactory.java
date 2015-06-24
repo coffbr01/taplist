@@ -2,7 +2,6 @@ package com.bcoffield.taplist.server.dtofactory;
 
 import com.bcoffield.taplist.dto.DTOBeer;
 import com.bcoffield.taplist.entity.EBeer;
-import com.bcoffield.taplist.server.util.SRMUtil;
 
 public class BeerDTOFactory {
     public static DTOBeer build(EBeer entityBeer) {
@@ -12,7 +11,7 @@ public class BeerDTOFactory {
         result.setFg(entityBeer.getFg());
         result.setName(entityBeer.getName());
         result.setOg(entityBeer.getOg());
-        result.setSrm(SRMUtil.toColor(entityBeer.getSrm()));
+        result.setSrm(entityBeer.getSrm());
         return result;
     }
 }

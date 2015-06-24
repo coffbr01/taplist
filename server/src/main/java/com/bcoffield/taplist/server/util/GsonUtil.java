@@ -1,4 +1,4 @@
-package com.bcoffield.taplist.rest.config;
+package com.bcoffield.taplist.server.util;
 
 import com.google.gson.Gson;
 

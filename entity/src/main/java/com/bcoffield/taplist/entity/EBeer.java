@@ -10,8 +10,7 @@ public class EBeer {
 
     private String name;
     private String description;
-    private EBeerStyle style;
-    private String srm;
+    private Integer srm;
     private Float abv;
     private Float og;
     private Float fg;
@@ -32,19 +31,11 @@ public class EBeer {
         this.description = description;
     }
 
-    public EBeerStyle getStyle() {
-        return style;
-    }
-
-    public void setStyle(EBeerStyle style) {
-        this.style = style;
-    }
-
-    public String getSrm() {
+    public Integer getSrm() {
         return srm;
     }
 
-    public void setSrm(String srm) {
+    public void setSrm(Integer srm) {
         this.srm = srm;
     }
 

@@ -2,4 +2,7 @@ dependencies {
     compile project(':dto')
     compile project(':entity')
     compile project(':api')
+    compile('javax.inject:javax.inject:1')
+    compile('com.google.code.gson:gson:2.3.1')
+    compile('com.google.inject:guice:3.0')
 }

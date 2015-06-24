@@ -2,4 +2,6 @@ apply plugin: 'war'
 
 dependencies {
     runtime project(':rest')
+    runtime project(':server')
+    runtime project(':context')
 }

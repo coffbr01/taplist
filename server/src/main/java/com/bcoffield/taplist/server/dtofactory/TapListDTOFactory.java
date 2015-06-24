@@ -1,7 +1,6 @@
 package com.bcoffield.taplist.server.dtofactory;
 
 import com.bcoffield.taplist.dto.DTOBeer;
-import com.bcoffield.taplist.dto.DTOBeerStyle;
 import com.bcoffield.taplist.dto.DTOTapList;
 import com.bcoffield.taplist.entity.EBeer;
 
@@ -25,8 +24,7 @@ public class TapListDTOFactory {
         result.setFg(entityBeer.getFg());
         result.setName(entityBeer.getName());
         result.setOg(entityBeer.getOg());
-        result.setSrm(Color.getColor(entityBeer.getSrm()));
-        result.setStyle(DTOBeerStyle.valueOf(entityBeer.getStyle().name()));
+        result.setSrm(entityBeer.getSrm());
         return result;
     }
 }

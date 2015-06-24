@@ -1,4 +1,4 @@
-package com.bcoffield.taplist.entity.config;
+package com.bcoffield.taplist.context.init;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;

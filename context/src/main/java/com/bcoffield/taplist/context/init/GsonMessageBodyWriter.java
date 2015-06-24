@@ -1,6 +1,6 @@
-package com.bcoffield.taplist.rest.provider;
+package com.bcoffield.taplist.context.init;
 
-import com.bcoffield.taplist.rest.config.GsonUtil;
+import com.bcoffield.taplist.server.util.GsonUtil;
 
 import javax.inject.Singleton;
 import javax.ws.rs.Produces;

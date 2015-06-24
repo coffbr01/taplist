@@ -14,7 +14,7 @@
     </filter-mapping>
 
     <listener>
-        <listener-class>com.bcoffield.taplist.rest.config.GuiceServletConfig</listener-class>
+        <listener-class>com.bcoffield.taplist.context.init.GuiceServletListener</listener-class>
     </listener>
 
 </web-app>
