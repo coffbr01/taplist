@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TapListDTOFactory {
-
     public static DTOTapList build(List<EBeer> entityBeers) {
         DTOTapList result = new DTOTapList();
         List<DTOBeer> dtoBeers = entityBeers.stream().map(TapListDTOFactory::createDTOBeer).collect(Collectors.toList());

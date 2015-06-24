@@ -1,6 +1,7 @@
 package com.bcoffield.taplist.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
@@ -8,12 +9,22 @@ import javax.persistence.NamedQuery;
 public class EBeer {
     public static final String FIND_ALL = "FIND_ALL";
 
+    @Id
+    private Integer id;
     private String name;
     private String description;
     private Integer srm;
     private Float abv;
     private Float og;
     private Float fg;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

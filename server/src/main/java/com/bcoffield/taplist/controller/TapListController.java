@@ -10,17 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.inject.Inject;
 import java.util.List;
 
 @Controller
 public class TapListController {
     private static final String PATH = "/ontap";
-    final private ITapListService tapListService;
-
-    @Autowired
-    public TapListController(ITapListService tapListService) {
-        this.tapListService = tapListService;
-    }
+    @Inject
+    private ITapListService tapListService;
 
     @RequestMapping(value = PATH, method = RequestMethod.GET)
     @ResponseBody
