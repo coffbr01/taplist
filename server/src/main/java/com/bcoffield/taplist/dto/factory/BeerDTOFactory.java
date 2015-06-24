@@ -1,4 +1,4 @@
-package com.bcoffield.taplist.server.dto.factory;
+package com.bcoffield.taplist.dto.factory;
 
 import com.bcoffield.taplist.dto.DTOBeer;
 import com.bcoffield.taplist.entity.EBeer;

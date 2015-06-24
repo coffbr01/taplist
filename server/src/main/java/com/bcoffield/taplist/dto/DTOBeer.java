@@ -1,6 +1,4 @@
-package com.bcoffield.taplist.server.dto;
-
-import java.awt.*;
+package com.bcoffield.taplist.dto;
 
 public class DTOBeer {
     private Float abv;

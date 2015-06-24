@@ -4,6 +4,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"com.bcoffield.taplist.bean", "com.bcoffield.taplist.controller"})
+@ComponentScan({"com.bcoffield.taplist.service", "com.bcoffield.taplist.controller"})
 public class AppConfig {
 }

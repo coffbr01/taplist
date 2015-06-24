@@ -1,4 +1,4 @@
-package com.bcoffield.taplist.server.entity;
+package com.bcoffield.taplist.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;

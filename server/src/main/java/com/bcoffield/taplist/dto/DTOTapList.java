@@ -1,4 +1,4 @@
-package com.bcoffield.taplist.server.dto;
+package com.bcoffield.taplist.dto;
 
 import java.util.List;
 
