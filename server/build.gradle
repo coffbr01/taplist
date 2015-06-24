@@ -1,4 +1,5 @@
 dependencies {
     compile project(':dto')
     compile project(':entity')
+    compile project(':api')
 }

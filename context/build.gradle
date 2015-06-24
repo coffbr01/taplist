@@ -1,0 +1,6 @@
+dependencies {
+    compile project(":rest")
+    compile project(":api")
+    compile project(":server")
+    compile('com.google.inject:guice:4.0')
+}

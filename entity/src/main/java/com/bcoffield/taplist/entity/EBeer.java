@@ -1,9 +1,13 @@
 package com.bcoffield.taplist.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name=EBeer.FIND_ALL, query="select * from ebeer")
 public class EBeer {
+    public static final String FIND_ALL = "FIND_ALL";
+
     private String name;
     private String description;
     private EBeerStyle style;
