@@ -2,9 +2,8 @@ package com.bcoffield.taplist.controller;
 
 import com.bcoffield.taplist.dto.DTOTapList;
 import com.bcoffield.taplist.dto.factory.TapListDTOFactory;
-import com.bcoffield.taplist.entity.EBeer;
+import com.bcoffield.taplist.entity.Beer;
 import com.bcoffield.taplist.service.ITapListService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,7 +21,10 @@ public class TapListController {
     @RequestMapping(value = PATH, method = RequestMethod.GET)
     @ResponseBody
     public DTOTapList get(Integer count) {
-        List<EBeer> tapList = tapListService.getTapList(count);
+        if (count == null) {
+            count = 4;
+        }
+        List<Beer> tapList = tapListService.getTapList(count);
         return TapListDTOFactory.build(tapList);
     }
 }

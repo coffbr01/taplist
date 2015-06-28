@@ -2,20 +2,20 @@ package com.bcoffield.taplist.dto.factory;
 
 import com.bcoffield.taplist.dto.DTOBeer;
 import com.bcoffield.taplist.dto.DTOTapList;
-import com.bcoffield.taplist.entity.EBeer;
+import com.bcoffield.taplist.entity.Beer;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class TapListDTOFactory {
-    public static DTOTapList build(List<EBeer> entityBeers) {
+    public static DTOTapList build(List<Beer> entityBeers) {
         DTOTapList result = new DTOTapList();
         List<DTOBeer> dtoBeers = entityBeers.stream().map(TapListDTOFactory::createDTOBeer).collect(Collectors.toList());
         result.setBeers(dtoBeers);
         return result;
     }
 
-    private static DTOBeer createDTOBeer(EBeer entityBeer) {
+    private static DTOBeer createDTOBeer(Beer entityBeer) {
         DTOBeer result = new DTOBeer();
         result.setAbv(entityBeer.getAbv());
         result.setDescription(entityBeer.getDescription());

@@ -3,11 +3,13 @@ package com.bcoffield.taplist.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
-@NamedQuery(name=EBeer.FIND_ALL, query="select * from ebeer")
-public class EBeer {
-    public static final String FIND_ALL = "FIND_ALL";
+@Table(name = "Beer")
+@NamedQuery(name = Beer.FIND_ALL, query = "SELECT b FROM Beer b")
+public class Beer {
+    public static final String FIND_ALL = "Beer.findAll";
 
     @Id
     private Integer id;
@@ -17,6 +19,17 @@ public class EBeer {
     private Float abv;
     private Float og;
     private Float fg;
+
+    public Beer() {};
+
+    public Beer(Float abv, String description, Float fg, String name, Float og, Integer srm) {
+        this.abv = abv;
+        this.description = description;
+        this.fg = fg;
+        this.name = name;
+        this.og = og;
+        this.srm = srm;
+    }
 
     public Integer getId() {
         return id;

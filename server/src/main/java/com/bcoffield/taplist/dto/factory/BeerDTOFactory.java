@@ -1,10 +1,10 @@
 package com.bcoffield.taplist.dto.factory;
 
 import com.bcoffield.taplist.dto.DTOBeer;
-import com.bcoffield.taplist.entity.EBeer;
+import com.bcoffield.taplist.entity.Beer;
 
 public class BeerDTOFactory {
-    public static DTOBeer build(EBeer entityBeer) {
+    public static DTOBeer build(Beer entityBeer) {
         DTOBeer result = new DTOBeer();
         result.setAbv(entityBeer.getAbv());
         result.setDescription(entityBeer.getDescription());
