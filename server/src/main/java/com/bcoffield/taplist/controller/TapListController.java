@@ -7,6 +7,7 @@ import com.bcoffield.taplist.service.ITapListService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.inject.Inject;
@@ -18,12 +19,9 @@ public class TapListController {
     @Inject
     private ITapListService tapListService;
 
-    @RequestMapping(value = PATH, method = RequestMethod.GET)
+    @RequestMapping(value = PATH, method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public DTOTapList get(Integer count) {
-        if (count == null) {
-            count = 4;
-        }
+    public DTOTapList get(@RequestParam(value = "count", defaultValue = "4") Integer count) {
         List<Beer> tapList = tapListService.getTapList(count);
         return TapListDTOFactory.build(tapList);
     }
