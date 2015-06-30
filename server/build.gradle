@@ -25,3 +25,8 @@ dependencies {
 war {
     archiveName 'taplist.war'
 }
+
+task deploy(type: Copy, dependsOn: build) {
+    from 'build/libs/taplist.war'
+    into "$System.env.TOMCAT_HOME/webapps/"
+}
