@@ -1,16 +1,16 @@
 package com.bcoffield.taplist.repository;
 
 import com.bcoffield.taplist.entity.Beer;
-import com.bcoffield.taplist.repository.common.IRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public class BeerRepository implements IRepository<Beer> {
+public class BeerRepository implements IBeerRepository {
     @PersistenceContext
     private EntityManager em;
 
@@ -20,6 +20,7 @@ public class BeerRepository implements IRepository<Beer> {
     }
 
     @Override
+    @Transactional
     public Beer save(Beer entity) {
         em.persist(entity);
         em.flush();

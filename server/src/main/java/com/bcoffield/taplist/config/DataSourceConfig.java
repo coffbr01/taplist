@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManager;
@@ -35,7 +36,7 @@ public class DataSourceConfig {
     @PropertySource("classpath:database.properties")
     static class DatabaseProperties {}
 
-    @Bean(destroyMethod = "close")
+    @Bean(name = "dataSource", destroyMethod = "close")
     DataSource dataSource(Environment env) {
         BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DB_DRIVER_CLASS));
@@ -45,7 +46,7 @@ public class DataSourceConfig {
         return ds;
     }
 
-    @Bean
+    @Bean(name = "entityManagerFactory")
     LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Environment env) {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
@@ -85,15 +86,16 @@ public class DataSourceConfig {
      * @param entityManagerFactory  The used JPA entity manager factory.
      * @return
      */
-    @Bean
-    JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+    @Bean(name = "transactionManager")
+    PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
     }
 
-    @Bean
+    @Bean(name = "entityManager")
     EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
         return entityManagerFactory.createEntityManager();
     }
+
 }

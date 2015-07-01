@@ -1,9 +1,6 @@
 package com.bcoffield.taplist.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Beer")
@@ -12,6 +9,7 @@ public class Beer {
     public static final String FIND_ALL = "Beer.findAll";
 
     @Id
+    @GeneratedValue
     private Integer id;
     private String name;
     private String description;

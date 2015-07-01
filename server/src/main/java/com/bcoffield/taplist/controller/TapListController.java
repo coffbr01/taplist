@@ -14,12 +14,12 @@ import javax.inject.Inject;
 import java.util.List;
 
 @Controller
+@RequestMapping("/ontap")
 public class TapListController {
-    private static final String PATH = "/ontap";
     @Inject
     private ITapListService tapListService;
 
-    @RequestMapping(value = PATH, method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public DTOTapList get(@RequestParam(value = "count", defaultValue = "4") Integer count) {
         List<Beer> tapList = tapListService.getTapList(count);

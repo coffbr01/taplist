@@ -1,7 +1,7 @@
 package com.bcoffield.taplist.service;
 
 import com.bcoffield.taplist.entity.Beer;
-import com.bcoffield.taplist.repository.BeerRepository;
+import com.bcoffield.taplist.repository.IBeerRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class TapListService implements ITapListService {
     @Inject
-    private BeerRepository beerRepository;
+    private IBeerRepository beerRepository;
 
     @Override
     public List<Beer> getTapList(Integer count) {

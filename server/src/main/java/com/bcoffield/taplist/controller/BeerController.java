@@ -4,21 +4,20 @@ import com.bcoffield.taplist.dto.DTOBeer;
 import com.bcoffield.taplist.dto.factory.BeerDTOFactory;
 import com.bcoffield.taplist.entity.Beer;
 import com.bcoffield.taplist.service.IBeerService;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
 
+@Controller
+@RequestMapping("/beer")
 public class BeerController {
-    private static final String PATH = "/beer";
-
     @Inject
     private IBeerService beerService;
 
-    @RequestMapping(value = PATH, method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    public DTOBeer post(DTOBeer dtoBeer) {
+    public DTOBeer post(@ModelAttribute DTOBeer dtoBeer) {
         Beer beer = beerService.createBeer(dtoBeer.getAbv(),
                 dtoBeer.getDescription(),
                 dtoBeer.getFg(),
