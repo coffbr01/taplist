@@ -1,7 +1,9 @@
 package com.bcoffield.taplist.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
+@XmlRootElement
 public class DTOTapList {
     private List<DTOBeer> beers;
 

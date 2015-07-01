@@ -1,5 +1,8 @@
 package com.bcoffield.taplist.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class DTOBeer {
     private Float abv;
     private String description;
