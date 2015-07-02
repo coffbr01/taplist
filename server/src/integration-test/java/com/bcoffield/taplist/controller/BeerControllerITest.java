@@ -36,16 +36,4 @@ public class BeerControllerITest extends ITest {
         Assert.assertEquals(dtoBeer.getFg(), getResult.getFg());
         Assert.assertEquals(dtoBeer.getSrm(), getResult.getSrm());
     }
-
-    private DTOBeer createDtoBeer() {
-        DTOBeer dtoBeer = new DTOBeer();
-        dtoBeer.setName("Some name");
-        dtoBeer.setDescription("Some description");
-        dtoBeer.setAbv(6.5f);
-        dtoBeer.setOg(1.060f);
-        dtoBeer.setFg(1.010f);
-        dtoBeer.setSrm(8);
-        return dtoBeer;
-    }
-
 }

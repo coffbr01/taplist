@@ -1,5 +1,6 @@
 package com.bcoffield.taplist;
 
+import com.bcoffield.taplist.dto.DTOBeer;
 import com.google.gson.Gson;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -87,4 +88,20 @@ public class ITest {
         }
         return client;
     }
+
+    protected DTOBeer createDtoBeer() {
+        return createDtoBeer("");
+    }
+
+    protected DTOBeer createDtoBeer(String nameSuffix) {
+        DTOBeer dtoBeer = new DTOBeer();
+        dtoBeer.setName("Some name " + nameSuffix);
+        dtoBeer.setDescription("Some description");
+        dtoBeer.setAbv(6.5f);
+        dtoBeer.setOg(1.060f);
+        dtoBeer.setFg(1.010f);
+        dtoBeer.setSrm(8);
+        return dtoBeer;
+    }
+
 }

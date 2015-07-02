@@ -16,7 +16,7 @@ public class BeerRepository implements IBeerRepository {
 
     @Override
     public List<Beer> findAll(Pageable page) {
-        return em.createNamedQuery(Beer.FIND_ALL, Beer.class).getResultList();
+        return em.createNamedQuery(Beer.FIND_ALL, Beer.class).setMaxResults(page.getPageSize()).getResultList();
     }
 
     @Override
