@@ -9,7 +9,6 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.junit.Before;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.UnsupportedEncodingException;
@@ -20,15 +19,6 @@ public class ITest {
 
     private static HttpClient client;
     private Gson gson;
-
-    @Before
-    public void iTestBefore() {
-        clearDatabase();
-    }
-
-    private void clearDatabase() {
-        System.err.println("TODO: clear database!");
-    }
 
     protected String getEndpoint(Class<?> clazz) throws Exception {
         RequestMapping annotation = clazz.getDeclaredAnnotation(RequestMapping.class);
@@ -73,7 +63,6 @@ public class ITest {
     }
 
     private String getUri(String endpoint, String path, Map<String, String> queryParams) throws UnsupportedEncodingException {
-        // TODO: so much laziness. Need to lookup at least port.
         String uri = "http://localhost:8080/taplist/" + endpoint;
         if (path != null) {
             if (!path.startsWith("/")) {
