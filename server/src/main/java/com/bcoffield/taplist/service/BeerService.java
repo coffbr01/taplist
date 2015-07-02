@@ -25,4 +25,9 @@ public class BeerService implements IBeerService {
         Pageable page = new PageRequest(0, count);
         return beerRepository.findAll(page);
     }
+
+    @Override
+    public Beer findOne(Integer id) {
+        return beerRepository.findOne(id);
+    }
 }

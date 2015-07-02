@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.inject.Inject;
 
 @RestController
-@RequestMapping("/beer")
+@RequestMapping("beer")
 public class BeerController {
     @Inject
     private IBeerService beerService;
@@ -23,6 +23,13 @@ public class BeerController {
                 dtoBeer.getName(),
                 dtoBeer.getOg(),
                 dtoBeer.getSrm());
+        return BeerDTOFactory.build(beer);
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public DTOBeer get(@PathVariable("id") Integer id) {
+        Beer beer = beerService.findOne(id);
         return BeerDTOFactory.build(beer);
     }
 }

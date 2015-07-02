@@ -4,12 +4,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class DTOBeer {
+    private Integer id;
     private Float abv;
     private String description;
     private Float fg;
     private String name;
     private Float og;
     private Integer srm;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public void setAbv(Float abv) {
         this.abv = abv;

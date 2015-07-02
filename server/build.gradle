@@ -11,6 +11,22 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    integrationTest {
+        java {
+            compileClasspath += main.output + test.output
+            runtimeClasspath += main.output + test.output
+            srcDir file('src/integration-test/java')
+        }
+        resources.srcDir file('src/integration-test/resources')
+    }
+}
+
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+}
+
 dependencies {
     compile 'org.springframework:spring-webmvc:' + springVersion
     compile 'org.springframework:spring-tx:' + springVersion
@@ -20,15 +36,60 @@ dependencies {
     compile 'javax.servlet:javax.servlet-api:' + servletVersion
     compile 'javax:javaee-api:' + jeeVersion
     compile 'org.apache.commons:commons-dbcp2:2.1'
+
+    runtime 'com.h2database:h2:1.4.187'
     runtime 'com.fasterxml.jackson.core:jackson-core:2.5.4'
     runtime 'com.fasterxml.jackson.core:jackson-databind:2.5.4'
+
+    testCompile 'junit:junit:4.12'
+    integrationTestCompile 'org.assertj:assertj-core:3.1.0'
+    integrationTestCompile 'org.apache.httpcomponents:httpclient:4.5'
+    integrationTestCompile 'com.google.code.gson:gson:2.3.1'
 }
 
 war {
     archiveName 'taplist.war'
 }
 
-task deploy(type: Copy, dependsOn: build) {
+task integrationTest(type: Test, dependsOn: 'deploy') {
+    doFirst {
+        startTomcat.execute()
+    }
+    doLast {
+        stopTomcat.execute()
+    }
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+check.dependsOn integrationTest
+integrationTest.mustRunAfter test
+
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+
+task deploy(type: Copy, dependsOn: war) {
     from 'build/libs/taplist.war'
     into "$System.env.TOMCAT_HOME/webapps/"
 }
+
+task startTomcat(type:Exec) {
+  workingDir "$System.env.TOMCAT_HOME/bin"
+  commandLine './startup.sh'
+  standardOutput = new ByteArrayOutputStream()
+  ext.output = {
+    return standardOutput.toString()
+  }
+}
+
+task stopTomcat(type:Exec) {
+  workingDir "$System.env.TOMCAT_HOME/bin"
+  commandLine './shutdown.sh'
+  standardOutput = new ByteArrayOutputStream()
+  ext.output = {
+    return standardOutput.toString()
+  }
+}
+

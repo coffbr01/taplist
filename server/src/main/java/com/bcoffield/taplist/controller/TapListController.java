@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ontap")
+@RequestMapping("ontap")
 public class TapListController {
     @Inject
     private ITapListService tapListService;
