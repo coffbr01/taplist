@@ -1,13 +1,17 @@
 package com.bcoffield.taplist.service;
 
 import com.bcoffield.taplist.entity.Beer;
+import com.bcoffield.taplist.entity.Dispenser;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface IBeerService {
-    Beer createBeer(Float abv, String description, Float fg, String name, Float og, Integer srm);
+    Beer create(Float abv, String description, Float fg, String name, Float og, Integer srm);
 
-    List<Beer> findAll(Integer count);
+    Page<Beer> findAll(Integer count);
 
     Beer findOne(Integer id);
+
+    Beer setDispenser(Integer beerId, Integer dispenserId);
 }

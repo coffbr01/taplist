@@ -2,18 +2,16 @@ package com.bcoffield.taplist.controller;
 
 import com.bcoffield.taplist.ITest;
 import com.bcoffield.taplist.dto.DTOBeer;
-import com.bcoffield.taplist.dto.DTOTapList;
+import com.bcoffield.taplist.dto.DTODispenser;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class TapListControllerITest extends ITest {
+public class DispenserControllerITest extends ITest {
 
     @Test
-    public void testGetTapList() throws Exception {
+    public void testDispenser() throws Exception {
         DTOBeer dtoBeer1 = createDtoBeer("1");
         DTOBeer dtoBeer2 = createDtoBeer("2");
         DTOBeer dtoBeer3 = createDtoBeer("3");
@@ -33,11 +31,23 @@ public class TapListControllerITest extends ITest {
         Assert.assertEquals(dtoBeer3.getName(), postResult3.getName());
         Assert.assertEquals(dtoBeer4.getName(), postResult4.getName());
 
-        Map<String, String> params = new HashMap<>();
-        params.put("count", "3");
-        DTOTapList dtoTapList = makeGetRequest(TapListController.class, null, DTOTapList.class, params);
-        Assert.assertNotNull(dtoTapList);
-        List<DTOBeer> beers = dtoTapList.getBeers();
+        DTODispenser dtoDispenser = new DTODispenser();
+        dtoDispenser.setName("Keezer");
+        DTODispenser postResult = makePostRequest(DispenserController.class, null, DTODispenser.class, dtoDispenser);
+        DTODispenser getResult = makeGetRequest(DispenserController.class, String.valueOf(postResult.getId()), DTODispenser.class, null);
+        Assert.assertNotNull(getResult);
+        Assert.assertEquals(dtoDispenser.getName(), getResult.getName());
+
+        String path1 = postResult1.getId() + "/dispenser/" + getResult.getId();
+        String path2 = postResult2.getId() + "/dispenser/" + getResult.getId();
+        String path3 = postResult3.getId() + "/dispenser/" + getResult.getId();
+        makePutRequest(BeerController.class, path1, DTODispenser.class, null);
+        makePutRequest(BeerController.class, path2, DTODispenser.class, null);
+        makePutRequest(BeerController.class, path3, DTODispenser.class, null);
+
+        getResult = makeGetRequest(DispenserController.class, String.valueOf(postResult.getId()), DTODispenser.class, null);
+
+        List<DTOBeer> beers = getResult.getBeers();
         Assert.assertNotNull(beers);
         Assert.assertEquals(3, beers.size());
         Assert.assertEquals(dtoBeer1.getName(), beers.get(0).getName());

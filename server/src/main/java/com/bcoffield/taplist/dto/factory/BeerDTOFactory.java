@@ -2,9 +2,20 @@ package com.bcoffield.taplist.dto.factory;
 
 import com.bcoffield.taplist.dto.DTOBeer;
 import com.bcoffield.taplist.entity.Beer;
+import org.springframework.stereotype.Component;
 
-public class BeerDTOFactory {
-    public static DTOBeer build(Beer entityBeer) {
+import javax.inject.Inject;
+
+@Component
+public class BeerDTOFactory implements IBeerDTOFactory {
+    @Inject
+    private DispenserDTOFactory dispenserDTOFactory;
+
+    @Override
+    public DTOBeer build(Beer entityBeer) {
+        if (entityBeer == null) {
+            return null;
+        }
         DTOBeer result = new DTOBeer();
         result.setId(entityBeer.getId());
         result.setAbv(entityBeer.getAbv());

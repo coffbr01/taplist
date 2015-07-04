@@ -2,7 +2,7 @@ apply plugin: 'war'
 
 ext.sourceCompatibility = 1.8
 ext.targetCompatibility = 1.8
-ext.springVersion='4.1.6.RELEASE'
+ext.springVersion='4.1.7.RELEASE'
 ext.hibernateVersion='4.3.10.Final'
 ext.servletVersion='3.1.0'
 ext.jeeVersion='7.0'
@@ -51,13 +51,18 @@ war {
     archiveName 'taplist.war'
 }
 
-task integrationTest(type: Test, dependsOn: 'deploy') {
+task integrationTest(type: Test) {
     doFirst {
+        println "Starting tomcat"
         startTomcat.execute()
+        println "Sleeping..."
+        sleep(1000 * 10)
+        println "Resuming!"
     }
-    doLast {
-        stopTomcat.execute()
-    }
+//    doLast {
+//        println "Shutting down tomcat"
+//        stopTomcat.execute()
+//    }
     testClassesDir = sourceSets.integrationTest.output.classesDir
     classpath = sourceSets.integrationTest.runtimeClasspath
     outputs.upToDateWhen { false }

@@ -4,10 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Beer")
-@NamedQuery(name = Beer.FIND_ALL, query = "SELECT b FROM Beer b")
 public class Beer {
-    public static final String FIND_ALL = "Beer.findAll";
-
     @Id
     @GeneratedValue
     private Integer id;
@@ -17,10 +14,13 @@ public class Beer {
     private Float abv;
     private Float og;
     private Float fg;
+    @ManyToOne
+    private Dispenser dispenser;
 
     public Beer() {};
 
-    public Beer(Float abv, String description, Float fg, String name, Float og, Integer srm) {
+    public Beer(Integer id, Float abv, String description, Float fg, String name, Float og, Integer srm) {
+        this.id = id;
         this.abv = abv;
         this.description = description;
         this.fg = fg;
@@ -83,5 +83,13 @@ public class Beer {
 
     public void setFg(Float fg) {
         this.fg = fg;
+    }
+
+    public Dispenser getDispenser() {
+        return dispenser;
+    }
+
+    public void setDispenser(Dispenser dispenser) {
+        this.dispenser = dispenser;
     }
 }

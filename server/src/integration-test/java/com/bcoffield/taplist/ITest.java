@@ -6,6 +6,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
@@ -42,6 +43,15 @@ public class ITest {
     protected <T> T makePostRequest(Class<?> controllerClass, String path, Class<T> returnClass, Object requestBody) throws Exception {
         String uri = getUri(getEndpoint(controllerClass), path, null);
         HttpPost request = new HttpPost(uri);
+        String stringRequestBody = getGson().toJson(requestBody);
+        request.setEntity(new StringEntity(stringRequestBody));
+        request.setHeader("Content-Type", "application/json");
+        return makeRequest(request, returnClass);
+    }
+
+    protected <T> T makePutRequest(Class<?> controllerClass, String path, Class<T> returnClass, Object requestBody) throws Exception {
+        String uri = getUri(getEndpoint(controllerClass), path, null);
+        HttpPut request = new HttpPut(uri);
         String stringRequestBody = getGson().toJson(requestBody);
         request.setEntity(new StringEntity(stringRequestBody));
         request.setHeader("Content-Type", "application/json");
