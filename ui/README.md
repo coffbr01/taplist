@@ -8,10 +8,14 @@ An opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
 
 Install Node.js and then:
 
-```sh
+
 (if you don't have grunt-cli, karma, bower installed do the following:
+```sh
 $ sudo npm -g install grunt-cli karma bower
-Then run these:
+```
+
+Next, run these commands:
+```sh
 $ npm install
 $ bower install
 $ grunt watch
