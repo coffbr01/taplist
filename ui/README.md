@@ -9,9 +9,9 @@ An opinionated kickstarter for [AngularJS](http://angularjs.org) projects.
 Install Node.js and then:
 
 ```sh
-$ git clone git://github.com/joshdmiller/ng-boilerplate
-$ cd ng-boilerplate
+(if you don't have grunt-cli, karma, bower installed do the following:
 $ sudo npm -g install grunt-cli karma bower
+Then run these:
 $ npm install
 $ bower install
 $ grunt watch
